@@ -2,4 +2,4 @@
 blog
 
 
-http//:www.zealoustarry.com
+http//:www.zealoustarry.cn
