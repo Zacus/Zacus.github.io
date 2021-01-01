@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-01T09:52:11.520Z</updated>
+  <updated>2021-01-01T15:07:17.295Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,18 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>test</title>
+    <link href="http://yoursite.com/2021/01/01/test/"/>
+    <id>http://yoursite.com/2021/01/01/test/</id>
+    <published>2021-01-01T15:06:23.000Z</published>
+    <updated>2021-01-01T15:07:17.295Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="法师"><a href="#法师" class="headerlink" title="法师"></a>法师</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;法师&quot;&gt;&lt;a href=&quot;#法师&quot; class=&quot;headerlink&quot; title=&quot;法师&quot;&gt;&lt;/a&gt;法师&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客搭建</title>
     <link href="http://yoursite.com/2021/01/01/hello-world/"/>
     <id>http://yoursite.com/2021/01/01/hello-world/</id>
-    <published>2021-01-01T09:52:11.520Z</published>
-    <updated>2021-01-01T09:52:11.520Z</updated>
+    <published>2021-01-01T12:46:00.000Z</published>
+    <updated>2021-01-01T13:11:10.782Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h3 id="博客迁移"><a href="#博客迁移" class="headerlink" title="博客迁移"></a>博客迁移</h3><hr><h4 id="当需要迁移博客时，保存以下文件"><a href="#当需要迁移博客时，保存以下文件" class="headerlink" title="当需要迁移博客时，保存以下文件"></a>当需要迁移博客时，保存以下文件</h4><pre><code>_config.yml package.jsonscaffolds/source/themes/.gitignore</code></pre><h4 id="将其打包放入一个文件夹例如：hexo"><a href="#将其打包放入一个文件夹例如：hexo" class="headerlink" title="将其打包放入一个文件夹例如：hexo"></a>将其打包放入一个文件夹例如：hexo</h4><h4 id="执行下面命令"><a href="#执行下面命令" class="headerlink" title="执行下面命令"></a>执行下面命令</h4><pre><code>npm install -g hexo-cli //安装npm后，安装hexonpm install hexo-deployer-git --save //hexo部署插件hexo g  //构建hexo s  //服务执行hexo d  //部署hexo clean //清除hexo n &quot;pagename&quot;  //创建博文</code></pre><p>注意theme 我们所需的主题是否在，若不在重新下载。</p><hr>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.</summary>
+    <summary type="html">&lt;h2 id=&quot;主题&quot;&gt;&lt;a href=&quot;#主题&quot; class=&quot;headerlink&quot; title=&quot;主题&quot;&gt;&lt;/a&gt;主题&lt;/h2&gt;&lt;h3 id=&quot;博客迁移&quot;&gt;&lt;a href=&quot;#博客迁移&quot; class=&quot;headerlink&quot; title=&quot;博客迁移&quot;&gt;&lt;/a&gt;博客迁移&lt;/h</summary>
       
     
     
