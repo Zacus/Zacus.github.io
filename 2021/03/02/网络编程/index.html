@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="网络编程概述服务器端(Server)1.创建socket2.为创建的文件绑定端口号和ip地址3.监听客户端的请求4.接受客户端的信息  socket() 创建一个套接字用于通信SOCKET socket(int af, int type,int proctocol); *    af:0是address family(地址族) ,一般填AF_INET表示在Internet的socket *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络编程">
+<meta property="og:url" content="http://yoursite.com/2021/03/02/网络编程/index.html">
+<meta property="og:site_name" content="zealoustarry">
+<meta property="og:description" content="网络编程概述服务器端(Server)1.创建socket2.为创建的文件绑定端口号和ip地址3.监听客户端的请求4.接受客户端的信息  socket() 创建一个套接字用于通信SOCKET socket(int af, int type,int proctocol); *    af:0是address family(地址族) ,一般填AF_INET表示在Internet的socket *">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-02T03:36:27.867Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络编程">
+<meta name="twitter:description" content="网络编程概述服务器端(Server)1.创建socket2.为创建的文件绑定端口号和ip地址3.监听客户端的请求4.接受客户端的信息  socket() 创建一个套接字用于通信SOCKET socket(int af, int type,int proctocol); *    af:0是address family(地址族) ,一般填AF_INET表示在Internet的socket *">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/02/网络编程/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>网络编程 | zealoustarry</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="zealoustarry" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zealoustarry</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">灿烂星空</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/02/网络编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhao shuai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zealoustarry">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络编程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-02 11:36:22 / 修改时间：11:36:27" itemprop="dateCreated datePublished" datetime="2021-03-02T11:36:22+08:00">2021-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h3 id="服务器端-Server"><a href="#服务器端-Server" class="headerlink" title="服务器端(Server)"></a>服务器端(Server)</h3><p>1.创建socket<br>2.为创建的文件绑定端口号和ip地址<br>3.监听客户端的请求<br>4.接受客户端的信息</p>
+<ul>
+<li><h4 id="socket-创建一个套接字用于通信"><a href="#socket-创建一个套接字用于通信" class="headerlink" title="socket() 创建一个套接字用于通信"></a>socket() 创建一个套接字用于通信</h4><pre><code>SOCKET socket(int af, int type,int proctocol);
+*    af:0是address family(地址族) ,一般填AF_INET表示在Internet的socket
+*    type :socket类型, 流方式是SOCK_STREAM,  数据报文方式是SOCK_DGRAM
+*    第三个是传输协议,一般填0
+*    返回类型是SOCKET,是WINSOCK分配给的Socket编号,当指针用就可以了.
+*    建立失败则返回INVALID_SOCKET(残疾缺口)</code></pre></li>
+<li><h4 id="bind-将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求"><a href="#bind-将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求" class="headerlink" title="bind()    将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求"></a>bind()    将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求</h4><p>  一般来说，listen函数应该在调用socket和bind函数之后，调用函数accept之前调用。对于给定的监听套接口，内核要维护两个队列：<br>1、已由客户发出并到达服务器，服务器正在等待完成相应的TCP三路握手过程<br>2、已完成连接的队列</p>
+<pre><code>int bind(SOCKET s, strut_ockaddr_in*  name,  int  namelen);函数执行成功返回0，失败返回-1
+*    s就是申请到的接口
+*    name 是指进程具体地址,他的类型是一个结构体
+*    namelen就是位置的长度</code></pre></li>
+<li><h4 id="listen-函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。"><a href="#listen-函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。" class="headerlink" title="listen()   函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。"></a>listen()   函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。</h4><pre><code>* int listen(SOCKET s,int backlog);
+* s:用于标识一个已绑定未连接的套接字的描述字
+* backlog:相应socket可以排队的最大连接个数</code></pre></li>
+<li><h4 id="accept-从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。"><a href="#accept-从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。" class="headerlink" title="accept()   从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。"></a>accept()   从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。</h4><pre><code>SOCKET accept(SOCKET s,struct sockaddr_in *addr,  int  *addrlen);
+* s: socket函数返回一个套接字描述符。
+* addr:是一个指向struct sockaddr，包含客户端的IP地址和端口。
+* addrlen:传入传出参数，addr所占内存空间大小。它设置于sizeof(struct sockaddr).
+* 成功返回一个新的套接字(并不是新创建的，而是队列中的)，用于和客户端通信
+* 失败返回-1</code></pre><h3 id="客户端-Client"><a href="#客户端-Client" class="headerlink" title="客户端(Client)"></a>客户端(Client)</h3></li>
+<li><h4 id="connect-函数用来在面向连接的数据流-socket-模式下发送数据"><a href="#connect-函数用来在面向连接的数据流-socket-模式下发送数据" class="headerlink" title="connect() 函数用来在面向连接的数据流 socket 模式下发送数据"></a>connect() 函数用来在面向连接的数据流 socket 模式下发送数据</h4><pre><code>int connect(int sockfd, struct sockaddr *serv_addr, int addrlen);
+* sockfd: socket函数返回一个套接字描述符.
+* serv_addr 是一个指向struct sockaddr的包含目的IP地址和端口.
+* addrlen 设置sizeof为(struct sockaddr).
+
+int recv(SOCKET sock, char *buf, int len, int flags);  
+接收数据
+ssize_t read(int fd, void *buf, size_t nbytes);
+int send(SOCKET sock, const char *buf, int len, int flags);
+发送数据
+ssize_t write(int fd, const void *buf, size_t nbytes);</code></pre></li>
+</ul>
+<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><p>大端(高端)字节序：高地址存放低位，低地址存放高位(也称作网络字节序)<br>小端(低端)字节序：低地址存放低位，高地址存放高位</p>
+<p>网络传输采用的大端传输，如果机器是小端，需要对其进行转换<br>四个转换函数</p>
+<pre><code>uint32_t htonl(uint32_t hostlong)
+uint16_t htons(uint16_t hostshort)
+uint32_t ntohl(uint32_t netlong)
+uint16_t ntohs(uint16_t netshort)
+h-host n-network s-short l-long</code></pre><p>IP地址转换函数</p>
+<pre><code>int inet_pton(int af,const char * src,void *dst); 
+将ip地址的点分十进制形式转化为大端的网络ip
+const char * inet_ntop(int af,const void *src,char *dst,socklen_t size);
+将大端的网络ip地址转化为ip地址的点分十进制形式
+成功返回指向dst的指针，错误返回NULL,置errno</code></pre><h3 id="socket基础操作"><a href="#socket基础操作" class="headerlink" title="socket基础操作"></a>socket基础操作</h3><h4 id="在windows下进行socket编程，需要对socket进行初始化操作"><a href="#在windows下进行socket编程，需要对socket进行初始化操作" class="headerlink" title="在windows下进行socket编程，需要对socket进行初始化操作"></a>在windows下进行socket编程，需要对socket进行初始化操作</h4><p>方法一：</p>
+<pre><code>#pragma comment(lib,&quot;ws2_32.lib&quot;)</code></pre><p>方法二：在vs2017中，在属性-&gt;链接器-&gt;输入-&gt;附加依赖库中添加</p>
+<pre><code>ws2_32.lib</code></pre><h3 id="所遇到的问题"><a href="#所遇到的问题" class="headerlink" title="所遇到的问题"></a>所遇到的问题</h3><pre><code>windows下进行socket编程,在客户端WSAGetLastError()方法返回&quot;10061&quot;错误:强制拒绝连接(对于WSAGetLastError()返回的错误编号说明可查询得到)</code></pre><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><pre><code>经过排除并非防火墙问题，
+问题集中在server端,
+开始以为是添加#include&lt;thread&gt;头文件,
+后来知道主要是因为当有thread库后会导致std::bind()函数和sock的bind()冲突,默认会调用std::bind()函数</code></pre><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><pre><code>方式一：若不用多线程库，则可直接将#include&lt;thread&gt;删除,即可
+方式二：不使用using namespace std
+方式二：将bind()改为::bind()</code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/28/site/" rel="prev" title="灿烂星空">
+      <i class="fa fa-chevron-left"></i> 灿烂星空
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/02/守护进程/" rel="next" title="守护进程">
+      守护进程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端-Server"><span class="nav-number">1.0.2.</span> <span class="nav-text">服务器端(Server)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#socket-创建一个套接字用于通信"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">socket() 创建一个套接字用于通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind-将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">bind()    将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#listen-函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">listen()   函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accept-从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">accept()   从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端-Client"><span class="nav-number">1.0.3.</span> <span class="nav-text">客户端(Client)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#connect-函数用来在面向连接的数据流-socket-模式下发送数据"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">connect() 函数用来在面向连接的数据流 socket 模式下发送数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节序"><span class="nav-number">1.0.4.</span> <span class="nav-text">字节序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#socket基础操作"><span class="nav-number">1.0.5.</span> <span class="nav-text">socket基础操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在windows下进行socket编程，需要对socket进行初始化操作"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">在windows下进行socket编程，需要对socket进行初始化操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所遇到的问题"><span class="nav-number">1.0.6.</span> <span class="nav-text">所遇到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.0.7.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决"><span class="nav-number">1.0.8.</span> <span class="nav-text">解决</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhao shuai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhao shuai</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

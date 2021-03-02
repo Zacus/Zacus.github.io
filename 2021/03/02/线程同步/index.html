@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zealoustarry">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="线程1234567graph LRD((创建))--许可--&amp;gt;A((就绪))A((就绪))  --进程调度--&amp;gt; B((执行))B((执行)) --I/O请求--&amp;gt; C((阻塞))B((执行)) --时间片完--&amp;gt; A((就绪))C((阻塞)) --I/O完成--&amp;gt;A((就绪))B((执行)) --释放--&amp;gt; E((终止))  新创建进程首先处于新状态当OS接纳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程同步">
+<meta property="og:url" content="http://yoursite.com/2021/03/02/线程同步/index.html">
 <meta property="og:site_name" content="zealoustarry">
+<meta property="og:description" content="线程1234567graph LRD((创建))--许可--&amp;gt;A((就绪))A((就绪))  --进程调度--&amp;gt; B((执行))B((执行)) --I/O请求--&amp;gt; C((阻塞))B((执行)) --时间片完--&amp;gt; A((就绪))C((阻塞)) --I/O完成--&amp;gt;A((就绪))B((执行)) --释放--&amp;gt; E((终止))  新创建进程首先处于新状态当OS接纳">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-02T03:39:05.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zealoustarry">
+<meta name="twitter:title" content="线程同步">
+<meta name="twitter:description" content="线程1234567graph LRD((创建))--许可--&amp;gt;A((就绪))A((就绪))  --进程调度--&amp;gt; B((执行))B((执行)) --I/O请求--&amp;gt; C((阻塞))B((执行)) --时间片完--&amp;gt; A((就绪))C((阻塞)) --I/O完成--&amp;gt;A((就绪))B((执行)) --释放--&amp;gt; E((终止))  新创建进程首先处于新状态当OS接纳">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2021/03/02/线程同步/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>zealoustarry</title>
+  <title>线程同步 | zealoustarry</title>
   
 
 
@@ -146,9 +150,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -164,10 +169,9 @@
       <meta itemprop="name" content="zealoustarry">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/02/线程同步/" class="post-title-link" itemprop="url">线程同步</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          线程同步
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +195,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">D((创建))--许可--&gt;A((就绪))</span><br><span class="line">A((就绪))  --进程调度--&gt; B((执行))</span><br><span class="line">B((执行)) --I/O请求--&gt; C((阻塞))</span><br><span class="line">B((执行)) --时间片完--&gt; A((就绪))</span><br><span class="line">C((阻塞)) --I/O完成--&gt;A((就绪))</span><br><span class="line">B((执行)) --释放--&gt; E((终止))</span><br></pre></td></tr></table></figure>
+        <h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">D((创建))--许可--&gt;A((就绪))</span><br><span class="line">A((就绪))  --进程调度--&gt; B((执行))</span><br><span class="line">B((执行)) --I/O请求--&gt; C((阻塞))</span><br><span class="line">B((执行)) --时间片完--&gt; A((就绪))</span><br><span class="line">C((阻塞)) --I/O完成--&gt;A((就绪))</span><br><span class="line">B((执行)) --释放--&gt; E((终止))</span><br></pre></td></tr></table></figure>
 
 <p>新创建进程首先处于新状态<br>当OS接纳新状态进程为就绪进程<br>OS只能从就绪进程中选一个进程执行<br>执行状态的进程执行完毕,或者被取消,则转化为终止状态<br>分时系统中,时间片用完,或优先级高的进程到来,将终止优先级低的进程执行<br>执行进程需要等待某事件发生.通常因进程需要的系统调用不能立即执行而阻塞<br>当阻塞进程等待的事件I/O完成,就转化为就绪状态<br>某些系统允许父进程在任何情况下终止其子进程.</p>
 <p>背景:由于创建进程(PCB 状态 内存分配 进程ID 等),当创建多个进程会占用大量的内存空间,导致效率降低,创建线程只需要少量的内存资源,同一个进程的线程共享资源,<br>线程是程序运行的过程,是计算机资源调度的基本单位</p>
@@ -256,637 +260,30 @@ int pthread_cond_signal(pthread_cond_t *cond);
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">do_work</span><span class="params">(<span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> cfd=*(<span class="keyword">int</span> *)arg;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//read数据</span></span><br><span class="line">		<span class="built_in">memset</span>(buf, <span class="number">0x00</span>, <span class="keyword">sizeof</span>(buf));</span><br><span class="line"></span><br><span class="line">		n=Read(cfd , buf ,<span class="keyword">sizeof</span>(buf));</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(n&lt;=<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"read error or client closed,n=[%d]\n"</span>,n);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"n==[%d],buf==[%s]\n"</span>,n,buf);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line"></span><br><span class="line">			buf[i]=<span class="built_in">toupper</span>(buf[i]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//发送数据给客户端</span></span><br><span class="line">		Write(cfd, buf ,n);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//关闭通信文件描述符</span></span><br><span class="line">	close(cfd);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//创建socket</span></span><br><span class="line">	<span class="keyword">int</span> lfd = Socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//bind</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">serv</span>;</span></span><br><span class="line">	bzero(&amp;serv,<span class="keyword">sizeof</span>(serv));</span><br><span class="line">	serv.sin_family = AF_INET;</span><br><span class="line">	serv.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line">	serv.sin_port = htons(<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line">	bind(lfd, (struct sockaddr *)&amp;serv , <span class="keyword">sizeof</span>(serv));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//监听</span></span><br><span class="line">	Listen(lfd , <span class="number">128</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> cfd;</span><br><span class="line">	<span class="keyword">pthread_t</span> thread;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//接受新的连接</span></span><br><span class="line">		cfd = Accept(lfd ,<span class="literal">NULL</span> ,<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//创建线程</span></span><br><span class="line">		pthread_create(&amp;thread,<span class="literal">NULL</span>,&amp;do_work,&amp;cfd);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="comment">//分离属性</span></span><br><span class="line">		pthread_detach(thread);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//关闭监听文件描述符</span></span><br><span class="line">	close(lfd);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/02/守护进程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/02/守护进程/" class="post-title-link" itemprop="url">守护进程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-02 11:37:14 / 修改时间：11:37:22" itemprop="dateCreated datePublished" datetime="2021-03-02T11:37:14+08:00">2021-03-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h4><p>   是linux中的后台服务进程，通常独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件。一般采用以d结尾的名字。例如：预读入缓输出机制的实现；ftp服务器；nfs服务器</p>
-<hr>
-
-<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
-<li>linux后台服务进程</li>
-<li>独立于控制终端</li>
-<li>周期性的执行某种服务</li>
-<li>不受用户登录或注销的影响</li>
-<li>一般采用以d结尾的名字</li>
-</ul>
-<hr>
-<h4 id="进程组"><a href="#进程组" class="headerlink" title="进程组,"></a>进程组,</h4><p> 是<b>一个或多个进程的集合</b>，每个进程都属于一个进程组，引入进程组是<b>为了简化对进程的管理</b>。当父进程创建子进程时，默认子进程与父进程属于一个进程组。</p>
-<hr>
-<h4 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h4><ul>
-<li><b>一个会话是一个或个进程组的集合。</b></li>
-<li><b>创建会话的进程不能是进程组组长。</b></li>
-<li>创建会话的进程成为一个进程组的组长进程,同时也成为会话的会长。</li>
-<li>新创建的会话丢弃原有的控制终端。</li>
-<li>建立新会话时，先调用fork,父进程终止，子进程调用setsid函数</li>
-</ul>
-<p>可以通过ps ajx来查看进程组ID和会话ID</p>
-<hr>
-<h4 id="创建守护进程"><a href="#创建守护进程" class="headerlink" title="创建守护进程"></a>创建守护进程</h4><blockquote>
-<p>创建基本步骤</p>
-<blockquote>
-<p><strong>1.fork子进程，父进程退出</strong></p>
-<ul>
-<li>子进程继承了父进程的进程组ID,但具有一个新的进程ID,这就保证了<strong>子进程不是一个进程组的组长ID</strong>,这是为调用setsid函数提供了必要的前提条件</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>2.子进程调用setsid函数创建新会话</strong><br>调用这个函数之后</p>
-<ul>
-<li>该进程成为新会话的首进程，是会话的会长</li>
-<li>成为一个新进程组的组长进程，是进程组组长</li>
-<li>不受控制终端的影响</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>3.改变当前工作的目录chdir     ——–非必须</p>
-</blockquote>
-<blockquote>
-<p>4.重设文件掩码                      ——–非必须</p>
-<ul>
-<li>子进程会继承父进程的掩码</li>
-<li>增加子进程程序操作的灵活性</li>
-<li>umask(0000)</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>5.关闭文件描述符                  ——–非必须</p>
-<ul>
-<li>守护进程不受控制终端的影响所以可以关闭，以释放资源</li>
-<li>close();</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>6.执行核心工作</strong></p>
-<ul>
-<li>守护进程的核心代码逻辑</li>
-</ul>
-</blockquote>
-</blockquote>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>编写一个守护进程,每隔2s钟获取一次系统时间,并将这次时间写入磁盘文件.
-
-分析:首先要按照步骤创建一个守护进程
-每隔2s:使用setitimer函数设置时钟,该时钟发送的是SIGALRM信号,
-信号操作:注册信号处理函数,signal或者sigaction,还有一个信号处理函数
-获取一次系统时间:time函数的使用,ctime函数的使用
-写入磁盘文件:文件操作哦函数:open write close</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建守护进程</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myfunc</span><span class="params">(<span class="keyword">int</span> signo)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//打开文件</span></span><br><span class="line">	<span class="keyword">int</span> fd=open(<span class="string">"mydemon.log"</span>,O_RDWR | O_CREAT | O_APPEND,<span class="number">0755</span>);</span><br><span class="line">	<span class="keyword">if</span>(fd&lt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取当前系统时间</span></span><br><span class="line">	<span class="keyword">time_t</span> tm;</span><br><span class="line">	time(&amp;tm);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> *tme=ctime(&amp;tm);</span><br><span class="line">	<span class="comment">//将时间写入文件</span></span><br><span class="line">	write(fd,tme,<span class="built_in">strlen</span>(tme));</span><br><span class="line"></span><br><span class="line">	close(fd);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//父进程fork子进程,父进程推出</span></span><br><span class="line">  <span class="keyword">pid_t</span> pid=fork();</span><br><span class="line">  <span class="keyword">if</span>(pid&lt;<span class="number">0</span> || pid&gt;<span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">	  <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//子进程调用setsid函数创建会话</span></span><br><span class="line">  setsid();</span><br><span class="line">  <span class="comment">//改变当前的工作目录</span></span><br><span class="line">  chdir(<span class="string">"/home/zs/log"</span>);</span><br><span class="line">  <span class="comment">//改变文件掩码</span></span><br><span class="line">  umask(<span class="number">0000</span>);<span class="comment">//0002,0022</span></span><br><span class="line">  <span class="comment">//关闭标准输入,输出和错误输出文件描述符</span></span><br><span class="line">  close(STDIN_FILENO);</span><br><span class="line">  close(STDOUT_FILENO);</span><br><span class="line">  close(STDERR_FILENO);</span><br><span class="line">  <span class="comment">//核心操作</span></span><br><span class="line">  <span class="comment">//注册信号处理函数</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">act</span>;</span></span><br><span class="line">  act.sa_handler=myfunc;</span><br><span class="line">  act.sa_flags=<span class="number">0</span>;</span><br><span class="line">  sigemptyset(&amp;act.sa_mask);</span><br><span class="line">  sigaction(SIGALRM,&amp;act,<span class="literal">NULL</span>);</span><br><span class="line">   </span><br><span class="line">  <span class="comment">//设置时钟</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">itimerval</span> <span class="title">tm</span>;</span></span><br><span class="line">  tm.it_interval.tv_sec=<span class="number">2</span>;</span><br><span class="line">  tm.it_interval.tv_usec=<span class="number">0</span>;</span><br><span class="line">  tm.it_value.tv_sec=<span class="number">3</span>;</span><br><span class="line">  tm.it_value.tv_usec=<span class="number">0</span>;</span><br><span class="line">  setitimer(ITIMER_REAL, &amp;tm, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	  sleep(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
 
-
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/02/守护进程/" rel="prev" title="守护进程">
+      <i class="fa fa-chevron-left"></i> 守护进程
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/02/网络编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/02/网络编程/" class="post-title-link" itemprop="url">网络编程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-02 11:36:22 / 修改时间：11:36:27" itemprop="dateCreated datePublished" datetime="2021-03-02T11:36:22+08:00">2021-03-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h3 id="服务器端-Server"><a href="#服务器端-Server" class="headerlink" title="服务器端(Server)"></a>服务器端(Server)</h3><p>1.创建socket<br>2.为创建的文件绑定端口号和ip地址<br>3.监听客户端的请求<br>4.接受客户端的信息</p>
-<ul>
-<li><h4 id="socket-创建一个套接字用于通信"><a href="#socket-创建一个套接字用于通信" class="headerlink" title="socket() 创建一个套接字用于通信"></a>socket() 创建一个套接字用于通信</h4><pre><code>SOCKET socket(int af, int type,int proctocol);
-*    af:0是address family(地址族) ,一般填AF_INET表示在Internet的socket
-*    type :socket类型, 流方式是SOCK_STREAM,  数据报文方式是SOCK_DGRAM
-*    第三个是传输协议,一般填0
-*    返回类型是SOCKET,是WINSOCK分配给的Socket编号,当指针用就可以了.
-*    建立失败则返回INVALID_SOCKET(残疾缺口)</code></pre></li>
-<li><h4 id="bind-将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求"><a href="#bind-将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求" class="headerlink" title="bind()    将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求"></a>bind()    将套接字与计算机上的一个端口号相绑定，进而在该端口监听服务请求</h4><p>  一般来说，listen函数应该在调用socket和bind函数之后，调用函数accept之前调用。对于给定的监听套接口，内核要维护两个队列：<br>1、已由客户发出并到达服务器，服务器正在等待完成相应的TCP三路握手过程<br>2、已完成连接的队列</p>
-<pre><code>int bind(SOCKET s, strut_ockaddr_in*  name,  int  namelen);函数执行成功返回0，失败返回-1
-*    s就是申请到的接口
-*    name 是指进程具体地址,他的类型是一个结构体
-*    namelen就是位置的长度</code></pre></li>
-<li><h4 id="listen-函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。"><a href="#listen-函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。" class="headerlink" title="listen()   函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。"></a>listen()   函数用来将套接字设为监听模式，并在套接字指定的端口上开始监听，以便对到达的服务请求进行处理。</h4><pre><code>* int listen(SOCKET s,int backlog);
-* s:用于标识一个已绑定未连接的套接字的描述字
-* backlog:相应socket可以排队的最大连接个数</code></pre></li>
-<li><h4 id="accept-从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。"><a href="#accept-从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。" class="headerlink" title="accept()   从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。"></a>accept()   从已完成连接队列返回第一个连接，如果已完成连接队列为空，则阻塞。</h4><pre><code>SOCKET accept(SOCKET s,struct sockaddr_in *addr,  int  *addrlen);
-* s: socket函数返回一个套接字描述符。
-* addr:是一个指向struct sockaddr，包含客户端的IP地址和端口。
-* addrlen:传入传出参数，addr所占内存空间大小。它设置于sizeof(struct sockaddr).
-* 成功返回一个新的套接字(并不是新创建的，而是队列中的)，用于和客户端通信
-* 失败返回-1</code></pre><h3 id="客户端-Client"><a href="#客户端-Client" class="headerlink" title="客户端(Client)"></a>客户端(Client)</h3></li>
-<li><h4 id="connect-函数用来在面向连接的数据流-socket-模式下发送数据"><a href="#connect-函数用来在面向连接的数据流-socket-模式下发送数据" class="headerlink" title="connect() 函数用来在面向连接的数据流 socket 模式下发送数据"></a>connect() 函数用来在面向连接的数据流 socket 模式下发送数据</h4><pre><code>int connect(int sockfd, struct sockaddr *serv_addr, int addrlen);
-* sockfd: socket函数返回一个套接字描述符.
-* serv_addr 是一个指向struct sockaddr的包含目的IP地址和端口.
-* addrlen 设置sizeof为(struct sockaddr).
-
-int recv(SOCKET sock, char *buf, int len, int flags);  
-接收数据
-ssize_t read(int fd, void *buf, size_t nbytes);
-int send(SOCKET sock, const char *buf, int len, int flags);
-发送数据
-ssize_t write(int fd, const void *buf, size_t nbytes);</code></pre></li>
-</ul>
-<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><p>大端(高端)字节序：高地址存放低位，低地址存放高位(也称作网络字节序)<br>小端(低端)字节序：低地址存放低位，高地址存放高位</p>
-<p>网络传输采用的大端传输，如果机器是小端，需要对其进行转换<br>四个转换函数</p>
-<pre><code>uint32_t htonl(uint32_t hostlong)
-uint16_t htons(uint16_t hostshort)
-uint32_t ntohl(uint32_t netlong)
-uint16_t ntohs(uint16_t netshort)
-h-host n-network s-short l-long</code></pre><p>IP地址转换函数</p>
-<pre><code>int inet_pton(int af,const char * src,void *dst); 
-将ip地址的点分十进制形式转化为大端的网络ip
-const char * inet_ntop(int af,const void *src,char *dst,socklen_t size);
-将大端的网络ip地址转化为ip地址的点分十进制形式
-成功返回指向dst的指针，错误返回NULL,置errno</code></pre><h3 id="socket基础操作"><a href="#socket基础操作" class="headerlink" title="socket基础操作"></a>socket基础操作</h3><h4 id="在windows下进行socket编程，需要对socket进行初始化操作"><a href="#在windows下进行socket编程，需要对socket进行初始化操作" class="headerlink" title="在windows下进行socket编程，需要对socket进行初始化操作"></a>在windows下进行socket编程，需要对socket进行初始化操作</h4><p>方法一：</p>
-<pre><code>#pragma comment(lib,&quot;ws2_32.lib&quot;)</code></pre><p>方法二：在vs2017中，在属性-&gt;链接器-&gt;输入-&gt;附加依赖库中添加</p>
-<pre><code>ws2_32.lib</code></pre><h3 id="所遇到的问题"><a href="#所遇到的问题" class="headerlink" title="所遇到的问题"></a>所遇到的问题</h3><pre><code>windows下进行socket编程,在客户端WSAGetLastError()方法返回&quot;10061&quot;错误:强制拒绝连接(对于WSAGetLastError()返回的错误编号说明可查询得到)</code></pre><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><pre><code>经过排除并非防火墙问题，
-问题集中在server端,
-开始以为是添加#include&lt;thread&gt;头文件,
-后来知道主要是因为当有thread库后会导致std::bind()函数和sock的bind()冲突,默认会调用std::bind()函数</code></pre><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><pre><code>方式一：若不用多线程库，则可直接将#include&lt;thread&gt;删除,即可
-方式二：不使用using namespace std
-方式二：将bind()改为::bind()</code></pre>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/site/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/28/site/" class="post-title-link" itemprop="url">灿烂星空</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-28 10:42:26" itemprop="dateCreated datePublished" datetime="2019-09-28T10:42:26+08:00">2019-09-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 11:35:19" itemprop="dateModified" datetime="2021-03-02T11:35:19+08:00">2021-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在这漫漫星空遇见，既是一种缘分</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/02/ubuntu-error/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/02/ubuntu-error/" class="post-title-link" itemprop="url">ubuntu { DRDY ERR }</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-02 11:26:00" itemprop="dateCreated datePublished" datetime="2019-05-02T11:26:00+08:00">2019-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 11:27:12" itemprop="dateModified" datetime="2021-03-02T11:27:12+08:00">2021-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>………<br>68489.756311] ata3.00: status: { DRDY ERR }<br>[68489.756314] ata3.00: error: { UNC }<br>[68489.951583] ata3.00: configured for UDMA/133<br>[68489.951604] ata3: EH complete<br>[68492.671124] ata3.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x0<br>[68492.671133] ata3.00: BMDMA stat 0x24<br>[68492.671140] ata3.00: cmd c8/00:08:55:e8:8d/00:00:00:00:00/e2 tag 0 dma 4096 in<br>[68492.671142]          res 51/40:00:56:e8:8d/00:00:00:00:00/02 Emask 0x9 (media error)<br>[68492.671145] ata3.00: status: { DRDY ERR }<br>[68492.671148] ata3.00: error: { UNC }<br>[68492.899657] ata3.00: configured for UDMA/133<br>[68492.899678] ata3: EH complete<br>[68495.610841] ata3.00: exception Emask 0x0 SAct 0x0 SErr 0x0 action 0x0<br>[68495.610851] ata3.00: BMDMA stat 0x24<br>[68495.610857] ata3.00: cmd c8/00:08:55:e8:8d/00:00:00:00:00/e2 tag 0 dma 4096 in<br>[68495.610859]          res 51/40:00:56:e8:8d/00:00:00:00:00/02 Emask 0x9 (media error)<br>[68495.610863] ata3.00: status: { DRDY ERR }<br>[68495.610865] ata3.00: error: { UNC }<br>[68495.799599] ata3.00: configured for UDMA/133<br>[68495.799620] sd 2:0:0:0: [sda] Result: hostbyte=DID_OK driverbyte=DRIVER_SENSE,SUGGEST_OK<br>[68495.799626] sd 2:0:0:0: [sda] Sense Key : Medium Error [current] [descriptor]<br>[68495.799631] Descriptor sense data with sense descriptors (in hex):<br>[68495.799633]         72 03 11 04 00 00 00 0c 00 0a 80 00 00 00 00 00<br>[68495.799643]         02 8d e8 56<br>[68495.799647] sd 2:0:0:0: [sda] Add. Sense: Unrecovered read error - auto reallocate failed<br>[68495.799653] end_request: I/O error, dev sda, sector 42854486<br>[68495.799675] ata3: EH complete<br>[68495.800096] sd 2:0:0:0: [sda] 625142448 512-byte hardware sectors (320073 MB)<br>[68495.817023] sd 2:0:0:0: [sda] Write Protect is off<br>[68495.817030] sd 2:0:0:0: [sda] Mode Sense: 00 3a 00 00<br>[68495.819042] sd 2:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn’t support DPO or FUA<br>[68495.826120] sd 2:0:0:0: [sda] 625142448 512-byte hardware sectors (320073 MB)<br>…..</p>
-<p>可能因为突然断电，或强制关机..导致的问题。<br>我尝试使用HDD Regenerator去修复成功了。</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/d40f04a08860107c2c40b672d0ad75e5.png" alt="这里写图片描述"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/06/01/hello-world/" class="post-title-link" itemprop="url">hexo博客搭建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-01 20:46:00" itemprop="dateCreated datePublished" datetime="2017-06-01T20:46:00+08:00">2017-06-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 11:33:15" itemprop="dateModified" datetime="2021-03-02T11:33:15+08:00">2021-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h3 id="博客迁移"><a href="#博客迁移" class="headerlink" title="博客迁移"></a>博客迁移</h3><hr>
-<h4 id="当需要迁移博客时，保存以下文件"><a href="#当需要迁移博客时，保存以下文件" class="headerlink" title="当需要迁移博客时，保存以下文件"></a>当需要迁移博客时，保存以下文件</h4><pre><code>_config.yml 
-package.json
-scaffolds/
-source/
-themes/
-.gitignore</code></pre><h4 id="将其打包放入一个文件夹例如：hexo"><a href="#将其打包放入一个文件夹例如：hexo" class="headerlink" title="将其打包放入一个文件夹例如：hexo"></a>将其打包放入一个文件夹例如：hexo</h4><h4 id="执行下面命令"><a href="#执行下面命令" class="headerlink" title="执行下面命令"></a>执行下面命令</h4><pre><code>npm install -g hexo-cli //安装npm后，安装hexo
-npm install hexo-deployer-git --save //hexo部署插件
-hexo g  //构建
-hexo s  //服务执行
-hexo d  //部署
-hexo clean //清除
-hexo n &quot;pagename&quot;  //创建博文</code></pre><p>注意theme 我们所需的主题是否在，若不在重新下载。</p>
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/拷贝构造函数-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/03/02/拷贝构造函数-1/" class="post-title-link" itemprop="url">拷贝构造函数(1)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-03-02 11:09:00" itemprop="dateCreated datePublished" datetime="2017-03-02T11:09:00+08:00">2017-03-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 11:12:01" itemprop="dateModified" datetime="2021-03-02T11:12:01+08:00">2021-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>拷贝赋值运算符</strong><br>与类控制其对象如何初始化一样，类也可以控制其对象如何赋值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Sales_data trans,accum;</span><br><span class="line">trans=accum;   //使用Sales_data的拷贝赋值运算符</span><br></pre></td></tr></table></figure>
-
-<p>与拷贝构造函数一样，如果类未定义自己的拷贝赋值运算符时，编译器会默认合成一个。</p>
-<p><strong>重载赋值运算符</strong><br>赋值运算符通常应该返回一个指向其左侧运算对象的引用。</p>
-<p><strong>合成拷贝赋值运算符</strong><br>如果一个类未定义自己的拷贝构造赋值运算符，编译器会为它生成一个合成拷贝赋值运算符。<br>对于某些类，合成拷贝赋值运算符用来禁止该对象的赋值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex1.</span><br><span class="line">Sales_data &amp;operator=(const Sales_data &amp;)=delete;  //阻止赋值</span><br><span class="line">~Sales_data()=default;   //使用合成的析构函数</span><br></pre></td></tr></table></figure>
-
-<p>合成拷贝赋值运算符返回一个指向其左侧运算对象的引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Sales_data&amp;  </span><br><span class="line">Sales_data::operator=(const Sales_data &amp;rhs) &#123;</span><br><span class="line">    </span><br><span class="line">    bookNo=rhs.bookNo;</span><br><span class="line">    units_sold=rhs.units_sold;</span><br><span class="line">    revenue=rhs.revenue;</span><br><span class="line">    return *this;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>析构函数</strong><br>析构函数是类的一个成员函数，名字由波浪线接类名构成。它没有返回值，也不接受参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Foo&#123;</span><br><span class="line">public :</span><br><span class="line">    ~Foo();</span><br><span class="line">    //...</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>在一个析构函数中，首先执行函数体，然后销毁成员(<strong>成员是在析构函数体之后隐含的析构阶段中被销毁的</strong>)，成员按初始化顺序的逆序销毁。<br>通常情况，析构函数会释放对象在生存期分配的所有资源。<br><strong>隐式销毁一个内置指针类型的成员不会delete它所指向的成员</strong><br><strong>调用析构函数</strong><br>无论任何一个对象被销毁，都会自动调用析构函数。</p>
-<p><strong>合成析构函数</strong><br>如果一个类没有定义自己的析构函数，编译器会为它定义一个合成析构函数，类似拷贝构造函数和赋值拷贝构造函数，对于某些类，合成构造拷贝函数被用来阻止该类型的对象被销毁。（ex1）;<br>如果不是这种情况，合成析构函数的函数体就为空。</p>
-<p><strong>三/五法则</strong><br>五个操作：拷贝构造函数、拷贝赋值运算符、移动构造函数、移动赋值运算符、析构函数。<br>一般情况，需要其中一种操作，也会需要所有操作，这些操作通常被看做一个整体。<br><strong>（1）需要析构函数的类也需要拷贝和赋值操作</strong><br>当我们决定一个类是否要定义它自己版本的构造函数时，<strong>一个基本原则</strong>首先确定这个类是否需要析构函数，如果需要，似乎可以肯定他也需要拷贝构造函数和拷贝赋值运算符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class HasPtr &#123;</span><br><span class="line">public:</span><br><span class="line">    HasPtr(const std::string &amp;s=std::string()):ps(new std::string),i(0) &#123;&#125;</span><br><span class="line">    ~HasPtr() &#123;delete ps;&#125;</span><br><span class="line">    //error：HasPtr需要一个拷贝构造函数和拷贝赋值运算符</span><br><span class="line">&#125;;</span><br><span class="line">在这个类的定义中，构造函数分配的内存将在HasPtr对象销毁时释放，error：我们使用了合成构造函数和拷贝构造函数，这些函数简单拷贝指针成员，这样就会使多个HasPtr对象指向相同的内存。delete时出错。</span><br><span class="line">HasPtr f(HasPtr hp)&#123;</span><br><span class="line">   HasPtr ret=hp;   //copy HasPtr</span><br><span class="line">   return ret;     //销毁hp and ret</span><br><span class="line">   &#125;</span><br><span class="line">  当f返回时，hp和ret都会被销毁，在两个对象上都会调用HasPtr的析构函数，此析构函数会delete ret 和hp</span><br><span class="line">  中的指针成员，但这两个对象都包含相同的指针值，此代码会导致指针被delete两次，就会出错(...未定义的)。</span><br></pre></td></tr></table></figure>
-
-<p><strong>（2）需要拷贝的类也需要赋值操作，反之亦然</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhao shuai">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zealoustarry">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/01/12/test/" class="post-title-link" itemprop="url">拷贝构造函数(2)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-01-12 23:06:00" itemprop="dateCreated datePublished" datetime="2017-01-12T23:06:00+08:00">2017-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 11:13:32" itemprop="dateModified" datetime="2021-03-02T11:13:32+08:00">2021-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>（1）拷贝构造函数</strong><br>如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。<br>class</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Foo &#123;</span><br><span class="line">public:</span><br><span class="line">   Foo();</span><br><span class="line">   Foo(const Foo &amp;); //拷贝构造函数</span><br><span class="line">   //...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>拷贝构造函数的第一个参数必须是一个引用类型。</p>
-<p><strong>合成拷贝构造函数</strong><br>对于某些类，用来拷贝该类类型的对象。<br>一般情况，合成的构造函数会将其参数的成员逐个拷贝到正在创建的对象中。<br>每个成员的类型决定了如何拷贝：对类类型的成员，会使用其拷贝构造函数来拷贝：内置成员的类型则直接拷贝。我们不能直接拷贝一个数组，但合成拷贝构造函数会逐元素的拷贝一个数组成员的类类型。<br>ex</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Sales_data &#123;</span><br><span class="line">    std::string bookNo;</span><br><span class="line">    unsigned units_sold=0;</span><br><span class="line">    double revenue=0.0;</span><br><span class="line">    public:</span><br><span class="line">     Sales_data(const Sales_data &amp;); </span><br><span class="line">     &#125;; </span><br><span class="line">     Sales_data::Sales_data(const Sales_data &amp; orig) :</span><br><span class="line">    bookNo(orig.bookNo),                   //使用string的拷贝构造函数</span><br><span class="line">    units_sold(orig.units_sold),           //拷贝orig.units_sold</span><br><span class="line">    revenue(orig.revenue)&#123;&#125;                //...</span><br></pre></td></tr></table></figure>
-
-<p><strong>直接初始化和拷贝初始化</strong><br>直接初始化：不使用等号，初始化变量，执行的是直接初始化。<br>拷贝初始化：初始化变量时，使用等号（=）来初始化，编译器把等号右侧的初始值拷贝到新创建的对象中去,如果需要，还要进行类型转换。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ex.</span><br><span class="line">string dots(10,&apos;,&apos;);</span><br><span class="line">string s(dots);    //direct initialization</span><br><span class="line">string s2=dots;   //copy initialization</span><br></pre></td></tr></table></figure>
-
-<p><strong>拷贝初始化</strong><br>拷贝初始化依靠拷贝构造函数或移动构造函数来完成。<br>拷贝初始化不仅在我们用等号定义变量时会发生，在下列情况下也会发生</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 将一个对象作为实参传递给一个非引用类型的形参。</span><br><span class="line">2 从一个返回类型为非引用类型的函数返回一个对象。</span><br><span class="line">3 用花括号列表初始化一个数组中的元素或一个聚合类中的成员。</span><br></pre></td></tr></table></figure>
-
-<p><strong>参数和返回值</strong><br>在函数调用过程中，具有非引用类型的参数要进行拷贝初始化。当一个函数具有非引用的返回类型时，返回值会被初始化调用方的结果。<br><strong>拷贝初始化的限制</strong><br>explicit构造函数只可用于直接初始化<br><strong>编译器可以绕过拷贝构造函数</strong><br>在拷贝构造初始化过程中，编译器可以跳过拷贝、移动构造函数，直接创建对象。即允许</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string null_book=&quot;9-999-99999-9&quot;;  //拷贝初始化</span><br><span class="line">改写为</span><br><span class="line">string null_book(&quot;9-999-99999-9&quot;);  //编译器略过了拷贝构造函数</span><br></pre></td></tr></table></figure>
-
-<p>即便略过了拷贝构造函数，但拷贝构造函数必须是存在且可访问的（ex. 不能是private的）。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -939,6 +336,7 @@ hexo n &quot;pagename&quot;  //创建博文</code></pre><p>注意theme 我们所
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-number">1.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥锁"><span class="nav-number">2.</span> <span class="nav-text">互斥锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">2.1.</span> <span class="nav-text">死锁,</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原因"><span class="nav-number">2.1.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#产生死锁的必要条件"><span class="nav-number">2.1.2.</span> <span class="nav-text">产生死锁的必要条件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#解决死锁的方法"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">解决死锁的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读写锁"><span class="nav-number">2.2.</span> <span class="nav-text">读写锁</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用场合"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">使用场合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#特性"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#函数"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#条件变量"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">条件变量</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#生产者消费者"><span class="nav-number">2.2.0.5.</span> <span class="nav-text">生产者消费者</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#信号量机制"><span class="nav-number">2.2.0.6.</span> <span class="nav-text">信号量机制</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

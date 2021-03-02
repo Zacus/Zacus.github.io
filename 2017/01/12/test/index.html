@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="法师##试一试">
+  <meta name="description" content="（1）拷贝构造函数如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。class 123456class Foo &amp;#123;public:   Foo();   Foo(const Foo &amp;amp;); //拷贝构造函数   //...   &amp;#125;  拷贝构造函数的第一个参数必须是一个引用类型。 合成拷贝构造函数对于某些类，用来拷贝该类类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2021/01/01/test/index.html">
+<meta property="og:title" content="拷贝构造函数(2)">
+<meta property="og:url" content="http://yoursite.com/2017/01/12/test/index.html">
 <meta property="og:site_name" content="zealoustarry">
-<meta property="og:description" content="法师##试一试">
+<meta property="og:description" content="（1）拷贝构造函数如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。class 123456class Foo &amp;#123;public:   Foo();   Foo(const Foo &amp;amp;); //拷贝构造函数   //...   &amp;#125;  拷贝构造函数的第一个参数必须是一个引用类型。 合成拷贝构造函数对于某些类，用来拷贝该类类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-01T15:18:48.339Z">
+<meta property="og:updated_time" content="2021-03-02T03:13:32.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="法师##试一试">
+<meta name="twitter:title" content="拷贝构造函数(2)">
+<meta name="twitter:description" content="（1）拷贝构造函数如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。class 123456class Foo &amp;#123;public:   Foo();   Foo(const Foo &amp;amp;); //拷贝构造函数   //...   &amp;#125;  拷贝构造函数的第一个参数必须是一个引用类型。 合成拷贝构造函数对于某些类，用来拷贝该类类">
 
-<link rel="canonical" href="http://yoursite.com/2021/01/01/test/">
+<link rel="canonical" href="http://yoursite.com/2017/01/12/test/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>test | zealoustarry</title>
+  <title>拷贝构造函数(2) | zealoustarry</title>
   
 
 
@@ -157,7 +157,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/01/test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -170,7 +170,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          test
+          拷贝构造函数(2)
         </h1>
 
         <div class="post-meta">
@@ -179,10 +179,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-01 23:06:23 / 修改时间：23:18:48" itemprop="dateCreated datePublished" datetime="2021-01-01T23:06:23+08:00">2021-01-01</time>
+              <time title="创建时间：2017-01-12 23:06:00" itemprop="dateCreated datePublished" datetime="2017-01-12T23:06:00+08:00">2017-01-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-02 11:13:32" itemprop="dateModified" datetime="2021-03-02T11:13:32+08:00">2021-03-02</time>
+              </span>
 
           
 
@@ -195,7 +201,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="法师"><a href="#法师" class="headerlink" title="法师"></a>法师</h1><p>##试一试</p>
+        <p><strong>（1）拷贝构造函数</strong><br>如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。<br>class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Foo &#123;</span><br><span class="line">public:</span><br><span class="line">   Foo();</span><br><span class="line">   Foo(const Foo &amp;); //拷贝构造函数</span><br><span class="line">   //...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>拷贝构造函数的第一个参数必须是一个引用类型。</p>
+<p><strong>合成拷贝构造函数</strong><br>对于某些类，用来拷贝该类类型的对象。<br>一般情况，合成的构造函数会将其参数的成员逐个拷贝到正在创建的对象中。<br>每个成员的类型决定了如何拷贝：对类类型的成员，会使用其拷贝构造函数来拷贝：内置成员的类型则直接拷贝。我们不能直接拷贝一个数组，但合成拷贝构造函数会逐元素的拷贝一个数组成员的类类型。<br>ex</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Sales_data &#123;</span><br><span class="line">    std::string bookNo;</span><br><span class="line">    unsigned units_sold=0;</span><br><span class="line">    double revenue=0.0;</span><br><span class="line">    public:</span><br><span class="line">     Sales_data(const Sales_data &amp;); </span><br><span class="line">     &#125;; </span><br><span class="line">     Sales_data::Sales_data(const Sales_data &amp; orig) :</span><br><span class="line">    bookNo(orig.bookNo),                   //使用string的拷贝构造函数</span><br><span class="line">    units_sold(orig.units_sold),           //拷贝orig.units_sold</span><br><span class="line">    revenue(orig.revenue)&#123;&#125;                //...</span><br></pre></td></tr></table></figure>
+
+<p><strong>直接初始化和拷贝初始化</strong><br>直接初始化：不使用等号，初始化变量，执行的是直接初始化。<br>拷贝初始化：初始化变量时，使用等号（=）来初始化，编译器把等号右侧的初始值拷贝到新创建的对象中去,如果需要，还要进行类型转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ex.</span><br><span class="line">string dots(10,&apos;,&apos;);</span><br><span class="line">string s(dots);    //direct initialization</span><br><span class="line">string s2=dots;   //copy initialization</span><br></pre></td></tr></table></figure>
+
+<p><strong>拷贝初始化</strong><br>拷贝初始化依靠拷贝构造函数或移动构造函数来完成。<br>拷贝初始化不仅在我们用等号定义变量时会发生，在下列情况下也会发生</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 将一个对象作为实参传递给一个非引用类型的形参。</span><br><span class="line">2 从一个返回类型为非引用类型的函数返回一个对象。</span><br><span class="line">3 用花括号列表初始化一个数组中的元素或一个聚合类中的成员。</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数和返回值</strong><br>在函数调用过程中，具有非引用类型的参数要进行拷贝初始化。当一个函数具有非引用的返回类型时，返回值会被初始化调用方的结果。<br><strong>拷贝初始化的限制</strong><br>explicit构造函数只可用于直接初始化<br><strong>编译器可以绕过拷贝构造函数</strong><br>在拷贝构造初始化过程中，编译器可以跳过拷贝、移动构造函数，直接创建对象。即允许</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string null_book=&quot;9-999-99999-9&quot;;  //拷贝初始化</span><br><span class="line">改写为</span><br><span class="line">string null_book(&quot;9-999-99999-9&quot;);  //编译器略过了拷贝构造函数</span><br></pre></td></tr></table></figure>
+
+<p>即便略过了拷贝构造函数，但拷贝构造函数必须是存在且可访问的（ex. 不能是private的）。</p>
 
     </div>
 
@@ -210,11 +232,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/01/01/hello-world/" rel="prev" title="hexo博客搭建">
-      <i class="fa fa-chevron-left"></i> hexo博客搭建
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2017/03/02/拷贝构造函数-1/" rel="next" title="拷贝构造函数(1)">
+      拷贝构造函数(1) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -273,7 +295,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#法师"><span class="nav-number">1.</span> <span class="nav-text">法师</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -287,7 +308,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
