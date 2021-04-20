@@ -77,6 +77,27 @@
   </entry>
   
   <entry>
+    <title>拷贝构造函数(1)</title>
+    <link href="http://yoursite.com/2021/03/02/%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-2/"/>
+    <id>http://yoursite.com/2021/03/02/%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-2/</id>
+    <published>2021-03-02T03:06:55.000Z</published>
+    <updated>2021-03-02T03:08:00.765Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>拷贝赋值运算符</strong><br>与类控制其对象如何初始化一样，类也可以控制其对象如何赋值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Sales_data trans,accum;</span><br><span class="line">trans=accum;   //使用Sales_data的拷贝赋值运算符</span><br></pre></td></tr></table></figure><p>与拷贝构造函数一样，如果类未定义自己的拷贝赋值运算符时，编译器会默认合成一个。</p><p><strong>重载赋值运算符</strong><br>赋值运算符通常应该返回一个指向其左侧运算对象的引用。</p><p><strong>合成拷贝赋值运算符</strong><br>如果一个类未定义自己的拷贝构造赋值运算符，编译器会为它生成一个合成拷贝赋值运算符。<br>对于某些类，合成拷贝赋值运算符用来禁止该对象的赋值。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex1.</span><br><span class="line">Sales_data &amp;operator=(const Sales_data &amp;)=delete;  //阻止赋值</span><br><span class="line">~Sales_data()=default;   //使用合成的析构函数</span><br></pre></td></tr></table></figure><p>合成拷贝赋值运算符返回一个指向其左侧运算对象的引用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Sales_data&amp;  </span><br><span class="line">Sales_data::operator=(const Sales_data &amp;rhs) &#123;</span><br><span class="line">    </span><br><span class="line">    bookNo=rhs.bookNo;</span><br><span class="line">    units_sold=rhs.units_sold;</span><br><span class="line">    revenue=rhs.revenue;</span><br><span class="line">    return *this;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>析构函数</strong><br>析构函数是类的一个成员函数，名字由波浪线接类名构成。它没有返回值，也不接受参数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Foo&#123;</span><br><span class="line">public :</span><br><span class="line">    ~Foo();</span><br><span class="line">    //...</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure><p>在一个析构函数中，首先执行函数体，然后销毁成员(<strong>成员是在析构函数体之后隐含的析构阶段中被销毁的</strong>)，成员按初始化顺序的逆序销毁。<br>通常情况，析构函数会释放对象在生存期分配的所有资源。<br><strong>隐式销毁一个内置指针类型的成员不会delete它所指向的成员</strong><br><strong>调用析构函数</strong><br>无论任何一个对象被销毁，都会自动调用析构函数。</p><p><strong>合成析构函数</strong><br>如果一个类没有定义自己的析构函数，编译器会为它定义一个合成析构函数，类似拷贝构造函数和赋值拷贝构造函数，对于某些类，合成构造拷贝函数被用来阻止该类型的对象被销毁。（ex1）;<br>如果不是这种情况，合成析构函数的函数体就为空。</p><p><strong>三/五法则</strong><br>五个操作：拷贝构造函数、拷贝赋值运算符、移动构造函数、移动赋值运算符、析构函数。<br>一般情况，需要其中一种操作，也会需要所有操作，这些操作通常被看做一个整体。<br><strong>（1）需要析构函数的类也需要拷贝和赋值操作</strong><br>当我们决定一个类是否要定义它自己版本的构造函数时，<strong>一个基本原则</strong>首先确定这个类是否需要析构函数，如果需要，似乎可以肯定他也需要拷贝构造函数和拷贝赋值运算符。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class HasPtr &#123;</span><br><span class="line">public:</span><br><span class="line">    HasPtr(const std::string &amp;s=std::string()):ps(new std::string),i(0) &#123;&#125;</span><br><span class="line">    ~HasPtr() &#123;delete ps;&#125;</span><br><span class="line">    //error：HasPtr需要一个拷贝构造函数和拷贝赋值运算符</span><br><span class="line">&#125;;</span><br><span class="line">在这个类的定义中，构造函数分配的内存将在HasPtr对象销毁时释放，error：我们使用了合成构造函数和拷贝构造函数，这些函数简单拷贝指针成员，这样就会使多个HasPtr对象指向相同的内存。delete时出错。</span><br><span class="line">HasPtr f(HasPtr hp)&#123;</span><br><span class="line">   HasPtr ret=hp;   //copy HasPtr</span><br><span class="line">   return ret;     //销毁hp and ret</span><br><span class="line">   &#125;</span><br><span class="line">  当f返回时，hp和ret都会被销毁，在两个对象上都会调用HasPtr的析构函数，此析构函数会delete ret 和hp</span><br><span class="line">  中的指针成员，但这两个对象都包含相同的指针值，此代码会导致指针被delete两次，就会出错(...未定义的)。</span><br></pre></td></tr></table></figure><p><strong>（2）需要拷贝的类也需要赋值操作，反之亦然</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;拷贝赋值运算符&lt;/strong&gt;&lt;br&gt;与类控制其对象如何初始化一样，类也可以控制其对象如何赋值：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span cl</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>灿烂星空</title>
     <link href="http://yoursite.com/2019/09/28/site/"/>
     <id>http://yoursite.com/2019/09/28/site/</id>
