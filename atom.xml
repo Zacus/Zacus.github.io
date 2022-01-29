@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-03-02T03:39:05.047Z</updated>
+  <updated>2022-01-29T16:03:22.383Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2022新年快乐</title>
+    <link href="http://yoursite.com/2022/01/30/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/"/>
+    <id>http://yoursite.com/2022/01/30/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</id>
+    <published>2022-01-29T16:00:44.000Z</published>
+    <updated>2022-01-29T16:03:22.383Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="王同学"><a href="#王同学" class="headerlink" title="王同学"></a>王同学</h1><pre><code>新年快乐 </code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;王同学&quot;&gt;&lt;a href=&quot;#王同学&quot; class=&quot;headerlink&quot; title=&quot;王同学&quot;&gt;&lt;/a&gt;王同学&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;新年快乐 &lt;/code&gt;&lt;/pre&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>线程同步</title>
